@@ -1,0 +1,17 @@
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\bin\Debug\net8.0\YawSafety.exe
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\bin\Debug\net8.0\YawSafety.deps.json
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\bin\Debug\net8.0\YawSafety.runtimeconfig.json
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\bin\Debug\net8.0\YawSafety.dll
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\bin\Debug\net8.0\YawSafety.pdb
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\bin\Debug\net8.0\Intel.RealSense.dll
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.csproj.AssemblyReference.cache
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.AssemblyInfoInputs.cache
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.AssemblyInfo.cs
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.csproj.CoreCompileInputs.cache
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.csproj.Up2Date
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.dll
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\refint\YawSafety.dll
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.pdb
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.genruntimeconfig.cache
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\ref\YawSafety.dll
