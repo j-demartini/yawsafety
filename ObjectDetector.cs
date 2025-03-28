@@ -9,11 +9,10 @@ namespace YawSafety
         public ObjectDetector()
         {
             Console.WriteLine("Object detector initialized.");
-            // Thread t = new Thread(() => {
-            // });
-            // t.Start();
+            Thread t = new Thread(() => {
                 StartDepthCamera();
-
+            });
+            t.Start();
         }
 
         public void StartDepthCamera()
@@ -34,19 +33,16 @@ namespace YawSafety
 
             while (true)
             {
-                using (var frames = pipeline.WaitForFrames())
-                {
-                    // 848 480
-                    var depthFrame = frames.DepthFrame.DisposeWith(frames);
-                    var colorizer = new Colorizer();
-                    var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
-                    //Console.WriteLine(depthFrame.GetDistance(200, 200));
-                    Console.WriteLine(depthFrame.GetDistance(135, 135));
+                FrameSet set;
+                pipeline.TryWaitForFrames(out set, 10000);
 
-                     
+                // 848 480
+                var depthFrame = set.DepthFrame.DisposeWith(set);
+                var colorizer = new Colorizer();
+                var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(set);
+                //Console.WriteLine(depthFrame.GetDistance(200, 200));
+                Console.WriteLine(depthFrame.GetDistance(135, 135));
 
-
-                }
             }
 
         }
