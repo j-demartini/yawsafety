@@ -9,10 +9,11 @@ namespace YawSafety
         public ObjectDetector()
         {
             Console.WriteLine("Object detector initialized.");
-            Thread t = new Thread(() => {
+            // Thread t = new Thread(() => {
+            // });
+            // t.Start();
                 StartDepthCamera();
-            });
-            t.Start();
+
         }
 
         public void StartDepthCamera()
