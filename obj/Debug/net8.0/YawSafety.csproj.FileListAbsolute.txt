@@ -15,3 +15,4 @@ C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\refint\YawSafety.dll
 C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.pdb
 C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.genruntimeconfig.cache
 C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\ref\YawSafety.dll
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.sourcelink.json
