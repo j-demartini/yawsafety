@@ -33,6 +33,7 @@ namespace YawSafety
 
             while (true)
             {
+                Console.WriteLine("Getting frames...");
                 using (var frames = pipeline.WaitForFrames(30000))
                 {
                     // 848 480
