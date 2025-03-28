@@ -19,18 +19,18 @@ namespace YawSafety
 
         public Program()
         {
-            try {
-                YawController = new YawController();            
-            } catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
+            // try {
+            //     YawController = new YawController();            
+            // } catch (Exception e)
+            // {
+            //     Console.WriteLine("Network Error: " + e.StackTrace);
+            // }
             
             try {
                 ObjectDetector = new ObjectDetector();
             } catch (Exception e)
             {
-                Console.WriteLine("BRUH: " + e.StackTrace);
+                Console.WriteLine("Detector Error: " + e.StackTrace);
             }
 
             while (true) ;
