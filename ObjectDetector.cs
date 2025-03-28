@@ -33,7 +33,7 @@ namespace YawSafety
 
             while (true)
             {
-                using (var frames = pipeline.WaitForFrames())
+                using (var frames = pipeline.WaitForFrames(30000))
                 {
                     // 848 480
                     var depthFrame = frames.DepthFrame.DisposeWith(frames);
