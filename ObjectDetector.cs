@@ -1,4 +1,5 @@
-﻿
+﻿using System.Diagnostics;
+using System.Numerics;
 using Intel.RealSense;
 
 namespace YawSafety
@@ -38,15 +39,11 @@ namespace YawSafety
                     var depthFrame = frames.DepthFrame.DisposeWith(frames);
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
+                    //Console.WriteLine(depthFrame.GetDistance(200, 200));
+                    Console.WriteLine(depthFrame.GetDistance(135, 135));
 
-                    for (int i = 0; i < 15; i++)
-                    {
-                        for (int j = 0; j < 15; j++)
-                        {
+                     
 
-                        }
-                    }
-                    Console.WriteLine(depthFrame.GetDistance(500, 5));
 
                 }
             }

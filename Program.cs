@@ -1,6 +1,4 @@
-﻿using System;
-using YawSafety;
-
+﻿using Intel.RealSense;
 
 namespace YawSafety
 {
@@ -11,7 +9,7 @@ namespace YawSafety
         //public static Window MainWindow { get; private set; }
         public static YawController YawController { get; private set; }
         public static ObjectDetector ObjectDetector { get; private set; }
-
+ 
         public bool visualization = true;
         
         static void Main(string[] args)
@@ -21,12 +19,23 @@ namespace YawSafety
 
         public Program()
         {
-            YawController = new YawController();
-            ObjectDetector = new ObjectDetector();
+            try {
+                YawController = new YawController();            
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            
+            try {
+                ObjectDetector = new ObjectDetector();
+            } catch (Exception e)
+            {
+                Console.WriteLine("BRUH: " + e.StackTrace);
+            }
 
             while (true) ;
         }
-
+ 
     }
 
 }
