@@ -22,11 +22,11 @@ namespace YawSafety
                 new CollisionPoint(200, 240),
                 new CollisionPoint(200, 300),
                 new CollisionPoint(200, 360),
-                new CollisionPoint(560, 120),
-                new CollisionPoint(560, 180),
-                new CollisionPoint(560, 240),
-                new CollisionPoint(560, 300),
-                new CollisionPoint(560, 360),
+                new CollisionPoint(600, 120),
+                new CollisionPoint(600, 180),
+                new CollisionPoint(600, 240),
+                new CollisionPoint(600, 300),
+                new CollisionPoint(600, 360),
 
             };
 
