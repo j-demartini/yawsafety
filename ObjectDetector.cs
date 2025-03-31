@@ -26,9 +26,9 @@ namespace YawSafety
                 throw new Exception("No device detected. Is it plugged in?");
 
             var pipeline = new Pipeline(cameraContext);
-            // Config cfg = new Config();
-            // cfg.EnableAllStreams();
-            pipeline.Start();
+            Config cfg = new Config();
+            cfg.EnableStream(Intel.RealSense.Stream.Depth, 30);
+            pipeline.Start(cfg);
 
             Console.WriteLine("Depth camera started.");
 
