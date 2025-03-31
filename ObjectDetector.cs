@@ -65,20 +65,29 @@ namespace YawSafety
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
 
+                    Console.Write(depthFrame.Width + " " + depthFrame.Height);
+
                     foreach(CollisionPoint p in points)
                     {
                         Vector3 coordinates = p.GetActualCoordinates();
                         // Is this within the depth frame?
                         if(WithinBounds(coordinates))
                         {
-                            // Get distance in depth frame
-                            float dist = depthFrame.GetDistance((int)coordinates.X, (int)coordinates.Y);
-                            if(!Passes(dist))
+                            try {
+                                                            // Get distance in depth frame
+                                float dist = depthFrame.GetDistance((int)coordinates.X, (int)coordinates.Y);
+                                if(!Passes(dist))
+                                {
+                                    Console.WriteLine("Chair emergency stopped at: " + coordinates.X + ", " + coordinates.Y + " with value: " + dist);
+                                    YawController.Instance.StopChair();
+                                    return;
+                                }
+
+                            } catch (Exception e)
                             {
-                                Console.WriteLine("Chair emergency stopped at: " + coordinates.X + ", " + coordinates.Y + " with value: " + dist);
-                                YawController.Instance.StopChair();
-                                return;
+                                Console.WriteLine(e.StackTrace);
                             }
+
                         }
                     }
                 }
