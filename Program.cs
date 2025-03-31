@@ -5,6 +5,8 @@ namespace YawSafety
     class Program
     {
 
+        public static Program Instance;
+
         //public static Application WinApp { get; private set; }
         //public static Window MainWindow { get; private set; }
         public static YawController YawController { get; private set; }
@@ -19,6 +21,9 @@ namespace YawSafety
 
         public Program()
         {
+
+            Instance = this;
+
             try {
                 YawController = new YawController();            
             } catch (Exception e)
@@ -34,6 +39,11 @@ namespace YawSafety
             }
 
             while (true) ;
+        }
+
+        public void Reset()
+        {
+            YawController = new YawController();
         }
  
     }

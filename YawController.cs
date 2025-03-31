@@ -44,7 +44,7 @@ namespace YawSafety
         {
             client.Client.Send([0xA2]);
             Console.WriteLine("Chair disconnected.");
-            ConnectToChair();
+            Program.Instance.Reset();
         }
 
         public void ReceiveData()
