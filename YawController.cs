@@ -50,6 +50,7 @@ namespace YawSafety
         {
             client.Client.Send([0xA2]);
             Console.WriteLine("Chair disconnected.");
+            client.Close();
             Activated = false;
         }
 
@@ -69,7 +70,6 @@ namespace YawSafety
         {
 
             DateTime now = DateTime.Now;
-            Console.WriteLine("parsing");
             string split = message.Split("SY[")[1];
             int index = split.IndexOf("]SP");
             string splitAgain = split.Substring(0, index);
