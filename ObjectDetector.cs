@@ -41,11 +41,23 @@ namespace YawSafety
                     var depthFrame = frames.DepthFrame.DisposeWith(frames);
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
-                    Vector3 point = TransformPoint(new Vector3(60, 100, 0));
 
-                    if(point.X > 1 && point.X < 840 && point.Y > 1 && point.Y < 480)
+                    Vector3 centerPoint = new Vector3(depthFrame.Width, depthFrame.Height, 0);
+                    Vector3 startingPoint = new Vector3(240, 240, 0);
+
+                    // Get point relative to center
+                    Vector3 relativePoint = startingPoint - centerPoint;
+
+                    // Transform with quaternion
+                    relativePoint = TransformPoint(relativePoint);
+
+                    // Convert back to other coordinate frame
+                    Vector3 finalPoint = relativePoint + centerPoint;
+
+                    if(finalPoint.X > 1 && finalPoint.X < depthFrame.Width && finalPoint.Y > 1 && finalPoint.Y < depthFrame.Height)
                     {
-                        if(depthFrame.GetDistance((int)point.X, (int)point.Y) < 2)
+                        float dist = depthFrame.GetDistance((int)finalPoint.X, (int)finalPoint.Y);
+                        if(dist < 2 && dist > 0.01)
                         {
                             YawController.Instance.StopChair();
                         }
@@ -58,7 +70,7 @@ namespace YawSafety
         public Vector3 TransformPoint(Vector3 input)
         {
             Vector3 axis = new Vector3(0, 1, 0);
-            double angle = 180 * (Math.PI / 180f);
+            double angle = YawController.Instance.ChairYaw * (Math.PI / 180f);
             float qx = axis.X * (float)Math.Sin(angle/2);
             float qy = axis.Y * (float)Math.Sin(angle/2);
             float qz = axis.Z * (float)Math.Sin(angle/2);
