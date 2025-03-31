@@ -43,7 +43,7 @@ namespace YawSafety
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
 
                     Vector3 centerPoint = new Vector3(depthFrame.Width, depthFrame.Height, 0);
-                    Vector3 startingPoint = new Vector3(240, 240, 0);
+                    Vector3 startingPoint = new Vector3(120, 240, 0);
 
                     // Get point relative to center
                     Vector3 relativePoint = startingPoint - centerPoint;
