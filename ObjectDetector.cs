@@ -93,7 +93,7 @@ namespace YawSafety
 
         private bool Passes(float dist)
         {
-            return dist > 2 || dist < .01;
+            return dist > 1.75 || dist < .01;
         }
 
     }
