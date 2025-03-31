@@ -53,6 +53,7 @@ namespace YawSafety
 
                     // Convert back to other coordinate frame
                     Vector3 finalPoint = relativePoint + centerPoint;
+                    Console.WriteLine("Checking: " + finalPoint + " |||| " + YawController.Instance.ChairYaw);
 
                     if(finalPoint.X > 1 && finalPoint.X < depthFrame.Width && finalPoint.Y > 1 && finalPoint.Y < depthFrame.Height)
                     {
@@ -61,6 +62,7 @@ namespace YawSafety
                         {
                             Console.WriteLine("Chair emergency stopped at: " + finalPoint.X + ", " + finalPoint.Y);
                             YawController.Instance.StopChair();
+                            return;
                         }
                     }
                 }

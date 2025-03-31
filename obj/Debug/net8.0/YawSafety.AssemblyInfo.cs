@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("YawSafety")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b8e5a41d03e16570cadb19121040c34dd490f99")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe879c9d119d9af973b98f084122427ef3c3b823")]
 [assembly: System.Reflection.AssemblyProductAttribute("YawSafety")]
 [assembly: System.Reflection.AssemblyTitleAttribute("YawSafety")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
