@@ -53,7 +53,6 @@ namespace YawSafety
 
         public void Reset()
         {
-            Thread.Sleep(10000);
             YawController = new YawController();
         }
  
