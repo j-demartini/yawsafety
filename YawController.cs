@@ -82,7 +82,6 @@ namespace YawSafety
             if(now.Subtract(PreviousEntry).Milliseconds >= 50)
             {
                 float vel = (ChairYaw - lastChairYaw) / .05f;
-                Console.WriteLine(vel);
                 PreviousEntry = now;
                 lastChairYaw = ChairYaw;
                 Moving = MathF.Abs(vel) > 5;
