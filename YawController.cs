@@ -68,7 +68,9 @@ namespace YawSafety
         public void ParseYaw(string message)
         {
             string split = message.Split("SY[")[1];
-            Console.WriteLine(split);
+            int index = split.IndexOf("]SP");
+            string splitAgain = message.Substring(0, index);
+            Console.WriteLine(splitAgain);
         }
 
 
