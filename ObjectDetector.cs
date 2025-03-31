@@ -11,6 +11,8 @@ namespace YawSafety
         private const int FRAME_HEIGHT = 480;
         private List<CollisionPoint> points;
 
+        private DateTime lastEmergencyStop;
+
         public ObjectDetector()
         {
          
@@ -78,6 +80,8 @@ namespace YawSafety
                                 {
                                     Console.WriteLine("Chair emergency stopped at: " + coordinates.X + ", " + coordinates.Y + " with value: " + dist);
                                     YawController.Instance.StopChair();
+                                    lastEmergencyStop = DateTime.Now;
+                                    return;
                                 }
 
                             } catch (Exception e)
@@ -90,6 +94,18 @@ namespace YawSafety
                 }
             }
 
+        }
+
+        public void Tick()
+        {
+            if(YawController.Instance.Moving && !YawController.Instance.Activated && DateTime.Now.Subtract(lastEmergencyStop).Seconds > 5)
+            {
+                YawController.Instance.Activated = true;
+                Thread t = new Thread(() => {
+                    StartDepthCamera();
+                });
+                t.Start();
+            }
         }
 
         private bool WithinBounds(Vector3 point)

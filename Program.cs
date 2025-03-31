@@ -38,7 +38,13 @@ namespace YawSafety
                 Console.WriteLine("Detector Error: " + e.Message);
             }
 
-            while (true) ;
+            while (true)
+            {
+                if(ObjectDetector != null)
+                {
+                    ObjectDetector.Tick();
+                }
+            }
         }
 
         public void Reset()

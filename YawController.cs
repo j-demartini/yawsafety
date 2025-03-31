@@ -13,8 +13,11 @@ namespace YawSafety
  
         public static YawController Instance { get; private set; }
         public float ChairYaw { get; private set; }
+        public bool Moving { get; private set; }
+        public bool Activated { get; set; }
 
         private TcpClient client;
+        private float lastChairYaw;
 
         public YawController()
         {
@@ -38,6 +41,7 @@ namespace YawSafety
 
             client.Client.Send(data.ToArray());
             Console.WriteLine("Connected.");
+            Activated = true;
         }
 
         public void StopChair()
@@ -65,6 +69,7 @@ namespace YawSafety
             int index = split.IndexOf("]SP");
             string splitAgain = split.Substring(0, index);
             ChairYaw = float.Parse(splitAgain);
+            Moving = Math.Abs(ChairYaw - lastChairYaw) > 0.3;
         }
 
 
