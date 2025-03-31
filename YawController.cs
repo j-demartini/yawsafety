@@ -74,9 +74,6 @@ namespace YawSafety
             int index = split.IndexOf("]SP");
             string splitAgain = split.Substring(0, index);
             ChairYaw = float.Parse(splitAgain);
-            
-            //float vel = ((ChairYaw - lastChairYaw) / (now.Subtract(PreviousEntry).Nanoseconds));
-
 
         }
 
@@ -89,6 +86,7 @@ namespace YawSafety
                 Console.WriteLine(vel);
                 PreviousEntry = now;
                 lastChairYaw = ChairYaw;
+                Moving = MathF.Abs(vel) > 2.5;
             }
 
         }
