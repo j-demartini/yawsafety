@@ -80,6 +80,11 @@ namespace YawSafety
 
             Console.WriteLine(ChairYaw);
 
+            if(ChairYaw < -90)
+            {
+                StopChair();
+            }
+
             lastChairYaw = ChairYaw;
             PreviousEntry = now;
         }
