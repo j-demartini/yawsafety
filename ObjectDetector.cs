@@ -70,7 +70,7 @@ namespace YawSafety
 
         public Vector3 TransformPoint(Vector3 input)
         {
-            Vector3 axis = new Vector3(0, 1, 0);
+            Vector3 axis = new Vector3(0, 0, 1);
             double angle = YawController.Instance.ChairYaw * (Math.PI / 180f);
             float qx = axis.X * (float)Math.Sin(angle/2);
             float qy = axis.Y * (float)Math.Sin(angle/2);
