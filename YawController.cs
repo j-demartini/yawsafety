@@ -75,13 +75,22 @@ namespace YawSafety
             string splitAgain = split.Substring(0, index);
             ChairYaw = float.Parse(splitAgain);
             
-            float vel = ((ChairYaw - lastChairYaw) / (now.Subtract(PreviousEntry).Nanoseconds));
-            Moving = vel > 0.00035;
+            //float vel = ((ChairYaw - lastChairYaw) / (now.Subtract(PreviousEntry).Nanoseconds));
 
-            Console.WriteLine(vel);
 
-            lastChairYaw = ChairYaw;
-            PreviousEntry = now;
+        }
+
+        public void Tick()
+        {
+            DateTime now = DateTime.Now;
+            if(now.Subtract(PreviousEntry).Milliseconds >= 250)
+            {
+                float vel = (ChairYaw - lastChairYaw) / .25f;
+                Console.WriteLine(vel);
+                PreviousEntry = now;
+                lastChairYaw = ChairYaw;
+            }
+
         }
 
 

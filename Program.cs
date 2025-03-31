@@ -40,6 +40,10 @@ namespace YawSafety
 
             while (true)
             {
+                if(YawController != null)
+                {
+                    YawController.Tick();
+                }
                 if(ObjectDetector != null)
                 {
                     ObjectDetector.Tick();
