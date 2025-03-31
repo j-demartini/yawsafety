@@ -69,7 +69,7 @@ namespace YawSafety
         {
             string split = message.Split("SY[")[1];
             int index = split.IndexOf("]SP");
-            string splitAgain = message.Substring(0, index);
+            string splitAgain = split.Substring(0, index);
             Console.WriteLine(splitAgain);
         }
 
