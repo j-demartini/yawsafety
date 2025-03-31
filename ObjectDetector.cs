@@ -19,30 +19,37 @@ namespace YawSafety
             points = new List<CollisionPoint>()
             {
 
+                new CollisionPoint(200, 60),
                 new CollisionPoint(200, 120),
                 new CollisionPoint(200, 180),
                 new CollisionPoint(200, 240),
                 new CollisionPoint(200, 300),
                 new CollisionPoint(200, 360),
+                new CollisionPoint(200, 420),
                 
+                new CollisionPoint(100, 60),
                 new CollisionPoint(100, 120),
                 new CollisionPoint(100, 180),
                 new CollisionPoint(100, 240),
                 new CollisionPoint(100, 300),
                 new CollisionPoint(100, 360),
+                new CollisionPoint(100, 420),
 
-
+                new CollisionPoint(600, 60),
                 new CollisionPoint(600, 120),
                 new CollisionPoint(600, 180),
                 new CollisionPoint(600, 240),
                 new CollisionPoint(600, 300),
                 new CollisionPoint(600, 360),
+                new CollisionPoint(600, 420),
 
+                new CollisionPoint(700, 60),
                 new CollisionPoint(700, 120),
                 new CollisionPoint(700, 180),
                 new CollisionPoint(700, 240),
                 new CollisionPoint(700, 300),
                 new CollisionPoint(700, 360),
+                new CollisionPoint(700, 420),
 
             };
 
