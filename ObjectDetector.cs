@@ -67,6 +67,8 @@ namespace YawSafety
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
 
+                    Console.WriteLine("AAAAA");
+
                     foreach(CollisionPoint p in points)
                     {
                         Vector3 coordinates = p.GetActualCoordinates();
