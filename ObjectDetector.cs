@@ -27,7 +27,7 @@ namespace YawSafety
 
             var pipeline = new Pipeline(cameraContext);
             Config cfg = new Config();
-            cfg.EnableStream(Intel.RealSense.Stream.Depth, 30);
+            cfg.EnableStream(Intel.RealSense.Stream.Depth);
             pipeline.Start(cfg);
 
             Console.WriteLine("Depth camera started.");
