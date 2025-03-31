@@ -59,6 +59,7 @@ namespace YawSafety
                         float dist = depthFrame.GetDistance((int)finalPoint.X, (int)finalPoint.Y);
                         if(dist < 2 && dist > 0.01)
                         {
+                            Console.WriteLine("Chair emergency stopped at: " + finalPoint.X + ", " + finalPoint.Y);
                             YawController.Instance.StopChair();
                         }
                     }
