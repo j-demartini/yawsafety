@@ -6,13 +6,36 @@ namespace YawSafety
 {
     internal class ObjectDetector
     {
+
+        private const int FRAME_WIDTH = 848;
+        private const int FRAME_HEIGHT = 480;
+        private List<CollisionPoint> points;
+
         public ObjectDetector()
         {
+         
+            points = new List<CollisionPoint>()
+            {
+
+                new CollisionPoint(240, 120),
+                new CollisionPoint(240, 180),
+                new CollisionPoint(240, 240),
+                new CollisionPoint(240, 300),
+                new CollisionPoint(240, 360),
+                new CollisionPoint(540, 120),
+                new CollisionPoint(540, 180),
+                new CollisionPoint(540, 240),
+                new CollisionPoint(540, 300),
+                new CollisionPoint(540, 360),
+
+            };
+
             Console.WriteLine("Object detector initialized.");
             Thread t = new Thread(() => {
                 StartDepthCamera();
             });
             t.Start();
+
         }
 
         public void StartDepthCamera()
@@ -42,27 +65,20 @@ namespace YawSafety
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
 
-                    Vector3 centerPoint = new Vector3(depthFrame.Width / 2, depthFrame.Height / 2, 0);
-                    Vector3 startingPoint = new Vector3(240, 240, 0);
-
-                    // Get point relative to center
-                    Vector3 relativePoint = startingPoint - centerPoint;
-
-                    // Transform with quaternion
-                    relativePoint = TransformPoint(relativePoint);
-
-                    // Convert back to other coordinate frame
-                    Vector3 finalPoint = relativePoint + centerPoint;
-                    Console.WriteLine("Checking: " + finalPoint + " |||| " + YawController.Instance.ChairYaw);
-
-                    if(finalPoint.X > 1 && finalPoint.X < depthFrame.Width && finalPoint.Y > 1 && finalPoint.Y < depthFrame.Height)
+                    foreach(CollisionPoint p in points)
                     {
-                        float dist = depthFrame.GetDistance((int)finalPoint.X, (int)finalPoint.Y);
-                        if(dist < 2 && dist > 0.01)
+                        Vector3 coordinates = p.GetActualCoordinates();
+                        // Is this within the depth frame?
+                        if(WithinBounds(coordinates))
                         {
-                            Console.WriteLine("Chair emergency stopped at: " + finalPoint.X + ", " + finalPoint.Y);
-                            YawController.Instance.StopChair();
-                            return;
+                            // Get distance in depth frame
+                            float dist = depthFrame.GetDistance((int)coordinates.X, (int)coordinates.Y);
+                            if(!Passes(dist))
+                            {
+                                Console.WriteLine("Chair emergency stopped at: " + coordinates.X + ", " + coordinates.Y + " with value: " + dist);
+                                YawController.Instance.StopChair();
+                                return;
+                            }
                         }
                     }
                 }
@@ -70,18 +86,14 @@ namespace YawSafety
 
         }
 
-        public Vector3 TransformPoint(Vector3 input)
+        private bool WithinBounds(Vector3 point)
         {
-            Vector3 axis = new Vector3(0, 0, 1);
-            double angle = YawController.Instance.ChairYaw * (Math.PI / 180f);
-            float qx = axis.X * (float)Math.Sin(angle/2);
-            float qy = axis.Y * (float)Math.Sin(angle/2);
-            float qz = axis.Z * (float)Math.Sin(angle/2);
-            float qw = (float)Math.Cos(angle/2);
-    
-            Quaternion q = new Quaternion(qx, qy, qz, qw);
-            Quaternion newPos = q * new Quaternion(input.X, input.Y, input.Z, 0) * Quaternion.Inverse(q);
-            return new Vector3(newPos.X, newPos.Y, newPos.Z);
+            return point.X > 1 && point.X < FRAME_WIDTH && point.Y > 1 && point.Y < FRAME_HEIGHT;
+        }
+
+        private bool Passes(float dist)
+        {
+            return dist > 2 || dist < .01;
         }
 
     }
