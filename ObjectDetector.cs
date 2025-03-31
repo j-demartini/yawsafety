@@ -78,7 +78,6 @@ namespace YawSafety
                                 {
                                     Console.WriteLine("Chair emergency stopped at: " + coordinates.X + ", " + coordinates.Y + " with value: " + dist);
                                     YawController.Instance.StopChair();
-                                    return;
                                 }
 
                             } catch (Exception e)
