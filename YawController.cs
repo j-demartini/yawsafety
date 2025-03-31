@@ -18,6 +18,7 @@ namespace YawSafety
 
         private TcpClient client;
         private float lastChairYaw;
+        private DateTime PreviousEntry;
 
         public YawController()
         {
@@ -66,13 +67,19 @@ namespace YawSafety
 
         public void ParseYaw(string message)
         {
+
+            DateTime now = DateTime.Now;
+
             string split = message.Split("SY[")[1];
             int index = split.IndexOf("]SP");
             string splitAgain = split.Substring(0, index);
             ChairYaw = float.Parse(splitAgain);
             Moving = Math.Abs(ChairYaw - lastChairYaw) > 0.3;
-            Console.WriteLine(message + " | " + Moving);
+            
+            Console.WriteLine(((ChairYaw - lastChairYaw) / (now.Subtract(PreviousEntry).Seconds)));
+            
             lastChairYaw = ChairYaw;
+            PreviousEntry = now;
         }
 
 
