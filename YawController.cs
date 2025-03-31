@@ -77,7 +77,9 @@ namespace YawSafety
             
             float vel = ((ChairYaw - lastChairYaw) / (now.Subtract(PreviousEntry).Nanoseconds));
             Moving = vel > 0.00001;
-            
+
+            Console.WriteLine(vel);
+
             lastChairYaw = ChairYaw;
             PreviousEntry = now;
         }
