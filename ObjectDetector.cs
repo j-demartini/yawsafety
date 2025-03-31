@@ -67,8 +67,6 @@ namespace YawSafety
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
 
-                    Console.WriteLine("AAAAA");
-
                     foreach(CollisionPoint p in points)
                     {
                         Vector3 coordinates = p.GetActualCoordinates();
@@ -85,7 +83,6 @@ namespace YawSafety
                                         Console.WriteLine("Chair emergency stopped at: " + coordinates.X + ", " + coordinates.Y + " with value: " + dist);
                                         YawController.Instance.StopChair();
                                         lastEmergencyStop = DateTime.Now;
-                                        return;
                                     }
                                 }
 
