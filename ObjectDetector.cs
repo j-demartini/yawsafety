@@ -41,14 +41,14 @@ namespace YawSafety
                     var depthFrame = frames.DepthFrame.DisposeWith(frames);
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
-                    //Console.WriteLine(depthFrame.GetDistance(200, 200));
                     Vector3 point = TransformPoint(new Vector3(60, 100, 0));
 
-                    Console.WriteLine(point);
-
-                    if(depthFrame.GetDistance((int)point.X, (int)point.Y) < 2)
+                    if(point.X > 1 && point.X < 840 && point.Y > 1 && point.Y < 480)
                     {
-                        YawController.Instance.StopChair();
+                        if(depthFrame.GetDistance((int)point.X, (int)point.Y) < 2)
+                        {
+                            YawController.Instance.StopChair();
+                        }
                     }
                 }
             }
