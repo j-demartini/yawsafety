@@ -15,7 +15,6 @@ namespace YawSafety
         public float ChairYaw { get; private set; }
 
         private TcpClient client;
-        bool active;
 
         public YawController()
         {
@@ -39,18 +38,12 @@ namespace YawSafety
 
             client.Client.Send(data.ToArray());
             Console.WriteLine("Connected.");
-            active = true;
         }
 
         public void StopChair()
         {
-            if(active)
-            {
-                active = false;
-                client.Client.Send([0xA2]);
-                Console.WriteLine("Chair disconnected.");
-            }
-
+            client.Client.Send([0xA2]);
+            Console.WriteLine("Chair disconnected.");
         }
 
         public void ReceiveData()
