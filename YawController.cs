@@ -61,8 +61,14 @@ namespace YawSafety
             {
                 byte[] data = new byte[1024];
                 socket.Receive(data, SocketFlags.None);
-                Console.WriteLine("RECEIVED: " + Encoding.ASCII.GetString(data));
+                ParseYaw(Encoding.ASCII.GetString(data));
             }
+        }
+
+        public void ParseYaw(string message)
+        {
+            string split = message.Split("SY[")[1];
+            Console.WriteLine(split);
         }
 
 
