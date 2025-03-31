@@ -71,6 +71,8 @@ namespace YawSafety
             string splitAgain = split.Substring(0, index);
             ChairYaw = float.Parse(splitAgain);
             Moving = Math.Abs(ChairYaw - lastChairYaw) > 0.3;
+            
+            lastChairYaw = ChairYaw;
         }
 
 
