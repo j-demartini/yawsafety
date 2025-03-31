@@ -23,9 +23,9 @@ namespace YawSafety
         public YawController()
         {
             Instance = this;
+            Activated = true;
             Task.Run(() => { ConnectToChair(); });
             Task.Run(() => { ReceiveData(); });
-            Activated = true;
         }
 
         public void ConnectToChair()
@@ -43,7 +43,6 @@ namespace YawSafety
 
             client.Client.Send(data.ToArray());
             Console.WriteLine("Connected.");
-            Activated = true;
         }
 
         public void StopChair()
@@ -58,7 +57,7 @@ namespace YawSafety
         {
             Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
             socket.Bind(new IPEndPoint(IPAddress.Any, 28067));
-            while (true)
+            while (Activated)
             {
                 byte[] data = new byte[1024];
                 socket.Receive(data, SocketFlags.None);
