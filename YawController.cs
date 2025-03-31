@@ -12,6 +12,7 @@ namespace YawSafety
     {
  
         public static YawController Instance { get; private set; }
+        public float ChairYaw { get; private set; }
 
         private TcpClient client;
         bool active;
@@ -60,7 +61,7 @@ namespace YawSafety
             {
                 byte[] data = new byte[1024];
                 socket.Receive(data, SocketFlags.None);
-                //Console.WriteLine("RECEIVED: " + Encoding.ASCII.GetString(data));
+                Console.WriteLine("RECEIVED: " + Encoding.ASCII.GetString(data));
             }
         }
 
