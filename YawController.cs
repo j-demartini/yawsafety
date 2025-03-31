@@ -80,9 +80,9 @@ namespace YawSafety
         public void Tick()
         {
             DateTime now = DateTime.Now;
-            if(now.Subtract(PreviousEntry).Milliseconds >= 250)
+            if(now.Subtract(PreviousEntry).Milliseconds >= 50)
             {
-                float vel = (ChairYaw - lastChairYaw) / .25f;
+                float vel = (ChairYaw - lastChairYaw) / .05f;
                 Console.WriteLine(vel);
                 PreviousEntry = now;
                 lastChairYaw = ChairYaw;
