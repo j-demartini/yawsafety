@@ -42,7 +42,7 @@ namespace YawSafety
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
                     //Console.WriteLine(depthFrame.GetDistance(200, 200));
-                    Console.WriteLine(depthFrame.GetDistance(135, 135));
+                    Console.WriteLine(depthFrame.GetDistance(60, 100));
                 }
             }
 
