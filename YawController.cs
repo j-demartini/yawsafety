@@ -86,7 +86,7 @@ namespace YawSafety
                 Console.WriteLine(vel);
                 PreviousEntry = now;
                 lastChairYaw = ChairYaw;
-                Moving = MathF.Abs(vel) > 2.5;
+                Moving = MathF.Abs(vel) > 5;
             }
 
         }
