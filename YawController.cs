@@ -76,7 +76,7 @@ namespace YawSafety
             ChairYaw = float.Parse(splitAgain);
             Moving = Math.Abs(ChairYaw - lastChairYaw) > 0.3;
             
-            Console.WriteLine(((ChairYaw - lastChairYaw) / (now.Subtract(PreviousEntry).Seconds)));
+            Console.WriteLine(((ChairYaw - lastChairYaw) / (now.Subtract(PreviousEntry).Microseconds)));
             
             lastChairYaw = ChairYaw;
             PreviousEntry = now;
