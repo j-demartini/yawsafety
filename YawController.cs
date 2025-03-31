@@ -14,7 +14,7 @@ namespace YawSafety
         public static YawController Instance { get; private set; }
         public float ChairYaw { get; private set; }
         public bool Moving { get; private set; }
-        public bool Activated { get; set; }
+        public bool Activated { get; private set; }
 
         private TcpClient client;
         private float lastChairYaw;
@@ -24,6 +24,7 @@ namespace YawSafety
             Instance = this;
             Task.Run(() => { ConnectToChair(); });
             Task.Run(() => { ReceiveData(); });
+            Activated = true;
         }
 
         public void ConnectToChair()
@@ -48,6 +49,7 @@ namespace YawSafety
         {
             client.Client.Send([0xA2]);
             Console.WriteLine("Chair disconnected.");
+            Activated = false;
         }
 
         public void ReceiveData()
