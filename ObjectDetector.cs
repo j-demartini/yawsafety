@@ -43,6 +43,10 @@ namespace YawSafety
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);
                     //Console.WriteLine(depthFrame.GetDistance(200, 200));
                     Console.WriteLine(depthFrame.GetDistance(60, 100));
+                    if(depthFrame.GetDistance(60, 100) < 2)
+                    {
+                        YawController.Instance.StopChair();
+                    }
                 }
             }
 

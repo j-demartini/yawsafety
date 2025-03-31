@@ -10,10 +10,14 @@ namespace YawSafety
     internal class YawController
     {
  
+        public static YawController Instance { get; private set; }
+
         private TcpClient client;
+        bool active;
 
         public YawController()
         {
+            Instance = this;
             Task.Run(() => { ConnectToChair(); });
             Task.Run(() => { ReceiveData(); });
         }
@@ -33,12 +37,18 @@ namespace YawSafety
 
             client.Client.Send(data.ToArray());
             Console.WriteLine("Connected.");
+            active = true;
         }
 
         public void StopChair()
         {
-            client.Client.Send([0xA2]);
-            Console.WriteLine("Chair disconnected.");
+            if(active)
+            {
+                active = false;
+                client.Client.Send([0xA2]);
+                Console.WriteLine("Chair disconnected.");
+            }
+
         }
 
         public void ReceiveData()
