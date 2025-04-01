@@ -56,7 +56,7 @@ namespace YawSafety
             Active = false;
             YawController = null;
             ObjectDetector = null;
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
             new Program();
         }
  
