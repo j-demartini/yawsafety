@@ -11,8 +11,7 @@ namespace YawSafety
         //public static Window MainWindow { get; private set; }
         public static YawController YawController { get; private set; }
         public static ObjectDetector ObjectDetector { get; private set; }
- 
-        public bool visualization = true;
+        public bool Active { get; private set; }
         
         static void Main(string[] args)
         {
@@ -22,6 +21,7 @@ namespace YawSafety
         public Program()
         {
 
+            Active = true;
             Instance = this;
 
             try {
@@ -53,7 +53,11 @@ namespace YawSafety
 
         public void Reset()
         {
-            YawController = new YawController();
+            Active = false;
+            YawController = null;
+            ObjectDetector = null;
+            Thread.Sleep(1000);
+            new Program();
         }
  
     }

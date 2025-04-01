@@ -79,7 +79,7 @@ namespace YawSafety
             Console.WriteLine("Depth camera started.");
 
 
-            while (true)
+            while (Program.Instance.Active)
             {
                 using (var frames = pipeline.WaitForFrames())
                 {

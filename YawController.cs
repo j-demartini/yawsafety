@@ -71,7 +71,7 @@ namespace YawSafety
             DateTime now = DateTime.Now;
             string split = message.Split("SY[")[1];
             int index = split.IndexOf("]SP");
-            string splitAgain = split.Substring(0, index);
+            string splitAgain = split.Substring(0, index); 
             ChairYaw = float.Parse(splitAgain);
 
         }
