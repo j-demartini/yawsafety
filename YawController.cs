@@ -41,7 +41,7 @@ namespace YawSafety
 
             data.AddRange(commandData);
 
-            client.Client.Send(data.ToArray());
+            client.Client.Send(data.ToArray());  
             Console.WriteLine("Connected.");
         }
 
@@ -81,7 +81,7 @@ namespace YawSafety
             DateTime now = DateTime.Now;
             if(now.Subtract(PreviousEntry).Milliseconds >= 50)
             {
-                float vel = (ChairYaw - lastChairYaw) / .05f;
+                 float vel = (ChairYaw - lastChairYaw) / .05f;
                 PreviousEntry = now;
                 lastChairYaw = ChairYaw;
                 Moving = MathF.Abs(vel) > 5;

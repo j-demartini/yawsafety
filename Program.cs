@@ -1,9 +1,14 @@
-﻿using Intel.RealSense;
+﻿using System.Device.Gpio;
+using Intel.RealSense;
 
 namespace YawSafety
 {
     class Program
     {
+
+        public const int ORANGE_PIN = 14;
+        public const int GREEN_PIN = 22;
+
 
         public static Program Instance;
 
@@ -11,6 +16,7 @@ namespace YawSafety
         //public static Window MainWindow { get; private set; }
         public static YawController YawController { get; private set; }
         public static ObjectDetector ObjectDetector { get; private set; }
+        public static GpioController Controller { get; private set; }
         public bool Active { get; private set; }
         
         static void Main(string[] args)
@@ -38,6 +44,9 @@ namespace YawSafety
                 Console.WriteLine("Detector Error: " + e.Message);
             }
 
+            Controller.OpenPin(ORANGE_PIN, PinMode.Output);
+            Controller.OpenPin(GREEN_PIN, PinMode.Output);
+
             while (true)
             {
                 if(YawController != null)
@@ -48,6 +57,13 @@ namespace YawSafety
                 {
                     ObjectDetector.Tick();
                 }
+
+
+                Controller.Write(ORANGE_PIN, PinValue.High);
+                Thread.Sleep(1000);
+                Controller.Write(ORANGE_PIN, PinValue.Low);
+                Thread.Sleep(1000);
+
             }
         }
 
