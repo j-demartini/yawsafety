@@ -38,7 +38,7 @@ namespace YawSafety
             }
             
             try {
-                ObjectDetector = new ObjectDetector();
+                //ObjectDetector = new ObjectDetector();
             } catch (Exception e)
             {
                 Console.WriteLine("Detector Error: " + e.Message);
