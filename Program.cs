@@ -7,7 +7,7 @@ namespace YawSafety
     {
 
         public const int ORANGE_PIN = 14;
-        public const int GREEN_PIN = 22;
+        public const int GREEN_PIN = 15;
 
 
         public static Program Instance;
@@ -41,7 +41,7 @@ namespace YawSafety
                 //ObjectDetector = new ObjectDetector();
             } catch (Exception e)
             {
-                Console.WriteLine("Detector Error: " + e.Message);
+                Console.WriteLine("Detector Error: " + e.Message);  
             }
 
             Controller = new GpioController();
@@ -61,8 +61,10 @@ namespace YawSafety
 
 
                 Controller.Write(ORANGE_PIN, PinValue.High);
+                Controller.Write(GREEN_PIN, PinValue.High);
                 Thread.Sleep(1000);
                 Controller.Write(ORANGE_PIN, PinValue.Low);
+                Controller.Write(GREEN_PIN, PinValue.Low);
                 Thread.Sleep(1000);
 
             }
