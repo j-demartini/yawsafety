@@ -44,6 +44,7 @@ namespace YawSafety
                 Console.WriteLine("Detector Error: " + e.Message);
             }
 
+            Controller = new GpioController();
             Controller.OpenPin(ORANGE_PIN, PinMode.Output);
             Controller.OpenPin(GREEN_PIN, PinMode.Output);
 
