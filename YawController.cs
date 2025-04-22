@@ -49,7 +49,6 @@ namespace YawSafety
         {
             client.Client.Send([0xA2]);
             Console.WriteLine("Chair disconnected.");
-            client.Client.Close();
             client.Close();
             Activated = false;
         }
