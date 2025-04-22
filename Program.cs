@@ -44,9 +44,15 @@ namespace YawSafety
                 Console.WriteLine("Detector Error: " + e.Message);  
             }
 
-            Controller = new GpioController();
-            Controller.OpenPin(ORANGE_PIN, PinMode.Output);
-            Controller.OpenPin(GREEN_PIN, PinMode.Output);
+            // try {
+            //     Controller = new GpioController();
+            //     Controller.OpenPin(ORANGE_PIN, PinMode.Output);
+            //     Controller.OpenPin(GREEN_PIN, PinMode.Output);
+            // } catch (Exception)
+            // {
+
+            // }
+
 
             while (true)
             {
@@ -60,12 +66,16 @@ namespace YawSafety
                 }
 
 
-                Controller.Write(ORANGE_PIN, PinValue.High);
-                Controller.Write(GREEN_PIN, PinValue.High);
-                Thread.Sleep(1000);
-                Controller.Write(ORANGE_PIN, PinValue.Low);
-                Controller.Write(GREEN_PIN, PinValue.Low);
-                Thread.Sleep(1000);
+                if(Controller != null)
+                {
+                    Controller.Write(ORANGE_PIN, PinValue.High);
+                    Controller.Write(GREEN_PIN, PinValue.High);
+                    Thread.Sleep(1000);
+                    Controller.Write(ORANGE_PIN, PinValue.Low);
+                    Controller.Write(GREEN_PIN, PinValue.Low);
+                    Thread.Sleep(1000);
+                }
+
 
             }
         }
