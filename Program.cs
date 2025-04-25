@@ -86,7 +86,8 @@ namespace YawSafety
         {
             if(Controller != null)
             {
-                Controller.Write(ORANGE_PIN, b ? PinValue.High : PinValue.Low);
+                if(Controller.IsPinOpen(ORANGE_PIN))
+                    Controller.Write(ORANGE_PIN, b ? PinValue.High : PinValue.Low);
             }
         }
  
