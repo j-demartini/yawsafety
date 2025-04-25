@@ -78,7 +78,7 @@ namespace YawSafety
             Controller.Write(ORANGE_PIN, PinValue.Low);
             Controller.ClosePin(GREEN_PIN);
             Controller.ClosePin(ORANGE_PIN);
-            Thread.Sleep(10000);
+            Thread.Sleep(2000);
             new Program();
         }
 

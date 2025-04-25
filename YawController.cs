@@ -63,6 +63,7 @@ namespace YawSafety
                 socket.Receive(data, SocketFlags.None);
                 ParseYaw(Encoding.ASCII.GetString(data));
             }
+            socket.Close();
         }
 
         public void ParseYaw(string message)
