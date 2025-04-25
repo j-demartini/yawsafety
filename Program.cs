@@ -81,7 +81,10 @@ namespace YawSafety
 
         public void OrangeLightOn(bool b)
         {
-            Controller.Write(ORANGE_PIN, b ? PinValue.High : PinValue.Low);
+            if(Controller != null)
+            {
+                Controller.Write(ORANGE_PIN, b ? PinValue.High : PinValue.Low);
+            }
         }
  
     }
