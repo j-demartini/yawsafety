@@ -67,14 +67,11 @@ namespace YawSafety
 
         public void ParseYaw(string message)
         {
-
             DateTime now = DateTime.Now;
             string split = message.Split("SY[")[1];
             int index = split.IndexOf("]SP");
             string splitAgain = split.Substring(0, index); 
             ChairYaw = float.Parse(splitAgain);
-            Console.WriteLine(message);
-
         }
 
         public void Tick()
