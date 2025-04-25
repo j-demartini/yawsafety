@@ -82,7 +82,7 @@ namespace YawSafety
                  float vel = (ChairYaw - lastChairYaw) / .05f;
                 PreviousEntry = now;
                 lastChairYaw = ChairYaw;
-                Moving = MathF.Abs(vel) > 5;
+                Moving = MathF.Abs(vel) > 12;
             }
 
         }
