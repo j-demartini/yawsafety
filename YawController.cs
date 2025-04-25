@@ -73,6 +73,7 @@ namespace YawSafety
             int index = split.IndexOf("]SP");
             string splitAgain = split.Substring(0, index); 
             ChairYaw = float.Parse(splitAgain);
+            Console.WriteLine(message);
 
         }
 

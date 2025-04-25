@@ -16,3 +16,4 @@ C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.pdb
 C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.genruntimeconfig.cache
 C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\ref\YawSafety.dll
 C:\Users\XRLAB_DEV10\Desktop\YawSafety\obj\Debug\net8.0\YawSafety.sourcelink.json
+C:\Users\XRLAB_DEV10\Desktop\YawSafety\bin\Debug\net8.0\System.Device.Gpio.dll

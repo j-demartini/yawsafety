@@ -88,6 +88,7 @@ namespace YawSafety
                     var colorizer = new Colorizer();
                     var colorizedDepth = colorizer.Process(depthFrame).DisposeWith(frames);   
 
+                    bool allPassed = true;
                     foreach(CollisionPoint p in points)
                     {
                         Vector3 coordinates = p.GetActualCoordinates();
@@ -99,6 +100,8 @@ namespace YawSafety
                                 float dist = depthFrame.GetDistance((int)coordinates.X, (int)coordinates.Y);
                                 if(!Passes(dist))
                                 {
+                                    Program.Instance.OrangeLightOn(true);
+                                    allPassed = false;
                                     if(YawController.Instance.Activated && YawController.Instance.Moving)
                                     {
                                         Console.WriteLine("Chair emergency stopped at: " + coordinates.X + ", " + coordinates.Y + " with value: " + dist);
@@ -113,6 +116,11 @@ namespace YawSafety
                             }
 
                         }
+                    }
+
+                    if(allPassed)
+                    {
+                        Program.Instance.OrangeLightOn(false);
                     }
                 }
             }

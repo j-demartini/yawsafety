@@ -44,17 +44,18 @@ namespace YawSafety
                 Console.WriteLine("Detector Error: " + e.Message);  
             }
 
-            // try {
-            //     Controller = new GpioController();
-            //     Controller.OpenPin(ORANGE_PIN, PinMode.Output);
-            //     Controller.OpenPin(GREEN_PIN, PinMode.Output);
-            // } catch (Exception)
-            // {
+            try {
+                Controller = new GpioController();
+                Controller.OpenPin(ORANGE_PIN, PinMode.Output);
+                Controller.OpenPin(GREEN_PIN, PinMode.Output);
+            } catch (Exception)
+            {
+                Console.WriteLine("Error opening pins.");
+            }
 
-            // }
+            Controller.Write(GREEN_PIN, PinValue.High);
 
-
-            while (true)
+            while (Active)
             {
                 if(YawController != null)
                 {
@@ -64,21 +65,10 @@ namespace YawSafety
                 {
                     ObjectDetector.Tick();
                 }
-
-
-                if(Controller != null)
-                {
-                    Controller.Write(ORANGE_PIN, PinValue.High);
-                    Controller.Write(GREEN_PIN, PinValue.High);
-                    Thread.Sleep(1000);
-                    Controller.Write(ORANGE_PIN, PinValue.Low);
-                    Controller.Write(GREEN_PIN, PinValue.Low);
-                    Thread.Sleep(1000);
-                }
-
-
             }
-        }
+
+            Controller.Write(GREEN_PIN, PinValue.Low);
+        }  
 
         public void Reset()
         {
@@ -87,6 +77,11 @@ namespace YawSafety
             ObjectDetector = null;
             Thread.Sleep(10000);
             new Program();
+        }
+
+        public void OrangeLightOn(bool b)
+        {
+            Controller.Write(ORANGE_PIN, b ? PinValue.High : PinValue.Low);
         }
  
     }
