@@ -67,7 +67,6 @@ namespace YawSafety
                 }
             }
 
-            Controller.Write(GREEN_PIN, PinValue.Low);
         }  
 
         public void Reset()
@@ -75,6 +74,10 @@ namespace YawSafety
             Active = false;
             YawController = null;
             ObjectDetector = null;
+            Controller.Write(GREEN_PIN, PinValue.Low);
+            Controller.Write(ORANGE_PIN, PinValue.Low);
+            Controller.ClosePin(GREEN_PIN);
+            Controller.ClosePin(ORANGE_PIN);
             Thread.Sleep(10000);
             new Program();
         }
