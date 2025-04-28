@@ -51,7 +51,6 @@ namespace YawSafety
                 Console.WriteLine("Transmitted");
                 byte[] statusData = Encoding.ASCII.GetBytes("YAWSAFETY:10.33.7.22");
                 socket.Send(statusData);
-                Thread.Sleep(50);
             }
 
         }
