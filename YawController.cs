@@ -19,6 +19,7 @@ namespace YawSafety
         private TcpClient client;
         private float lastChairYaw;
         private DateTime PreviousEntry;
+        private UdpClient udpClient;
 
         public YawController()
         {
@@ -44,16 +45,17 @@ namespace YawSafety
             client.Client.Send(data.ToArray());
             Console.WriteLine("Connected.");
 
-            Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
-            socket.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 25565));    
+            udpClient = new UdpClient();
+            udpClient.Client.Bind(new IPEndPoint(IPAddress.Any, 25565));
+
             while(Activated)
             {
                 Console.WriteLine("Transmitted");
                 byte[] statusData = Encoding.ASCII.GetBytes("YAWSAFETY:10.33.7.22");
-                socket.SendAsync(statusData);
+                udpClient.Send(statusData, statusData.Length, "255.255.255.255", 25565);
                 Thread.Sleep(100);
             }
-            socket.Close();
+            udpClient.Close();
 
         }
 
