@@ -45,11 +45,12 @@ namespace YawSafety
             Console.WriteLine("Connected.");
 
             Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
-            socket.Bind(new IPEndPoint(IPAddress.Any, 25565));    
+            socket.Bind(new IPEndPoint(IPAddress.Broadcast, 25565));    
             while(Activated)
             {
                 byte[] statusData = Encoding.ASCII.GetBytes("YAWSAFETY:10.33.7.22");
                 socket.Send(statusData);
+                Console.WriteLine("Transmitted");
                 Thread.Sleep(50);
             }
 
