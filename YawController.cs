@@ -50,7 +50,6 @@ namespace YawSafety
 
             while(Activated)
             {
-                Console.WriteLine("Transmitted");
                 byte[] statusData = Encoding.ASCII.GetBytes("YAWSAFETY:10.33.7.22");
                 udpClient.Send(statusData, statusData.Length, "255.255.255.255", 25565);
                 Thread.Sleep(100);
