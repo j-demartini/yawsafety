@@ -48,12 +48,12 @@ namespace YawSafety
                 Controller = new GpioController();
                 Controller.OpenPin(ORANGE_PIN, PinMode.Output);
                 Controller.OpenPin(GREEN_PIN, PinMode.Output);
+                Controller.Write(GREEN_PIN, PinValue.High);
             } catch (Exception)
             {
                 Console.WriteLine("Error opening pins.");
             }
 
-            Controller.Write(GREEN_PIN, PinValue.High);
 
             while (Active)
             {
