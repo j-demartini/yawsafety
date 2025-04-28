@@ -41,8 +41,18 @@ namespace YawSafety
 
             data.AddRange(commandData);
 
-            client.Client.Send(data.ToArray());  
+            client.Client.Send(data.ToArray());
             Console.WriteLine("Connected.");
+
+            Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
+            socket.Bind(new IPEndPoint(IPAddress.Any, 25565));    
+            while(Activated)
+            {
+                byte[] statusData = Encoding.ASCII.GetBytes("YAWSAFETY:10.33.7.22");
+                socket.Send(statusData);
+                Thread.Sleep(50);
+            }
+
         }
 
         public void StopChair()
