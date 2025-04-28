@@ -45,7 +45,7 @@ namespace YawSafety
             Console.WriteLine("Connected.");
 
             Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
-            socket.Bind(new IPEndPoint(IPAddress.Parse("10.33.6.14"), 7777));    
+            socket.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 25565));    
             while(Activated)
             {
                 Console.WriteLine("Transmitted");
