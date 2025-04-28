@@ -53,6 +53,8 @@ namespace YawSafety
                 socket.Send(statusData);
             }
 
+            socket.Close();
+
         }
 
         public void StopChair()
