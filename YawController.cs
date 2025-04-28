@@ -48,9 +48,9 @@ namespace YawSafety
             socket.Bind(new IPEndPoint(IPAddress.Broadcast, 25565));    
             while(Activated)
             {
+                Console.WriteLine("Transmitted");
                 byte[] statusData = Encoding.ASCII.GetBytes("YAWSAFETY:10.33.7.22");
                 socket.Send(statusData);
-                Console.WriteLine("Transmitted");
                 Thread.Sleep(50);
             }
 
