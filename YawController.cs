@@ -53,6 +53,8 @@ namespace YawSafety
                 socket.Send(statusData);
             }
 
+            Console.WriteLine("done");
+
             socket.Close();
 
         }
